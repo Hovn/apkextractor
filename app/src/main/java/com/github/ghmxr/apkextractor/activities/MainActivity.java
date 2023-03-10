@@ -178,7 +178,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
+        getMenuInflater().inflate(R.menu.menu_main_app, menu);
         this.menu = menu;
         //setIconEnable(menu,true);
         return true;

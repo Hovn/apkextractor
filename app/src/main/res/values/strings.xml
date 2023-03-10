@@ -4,6 +4,7 @@
     <string name="action_search">搜索</string>
     <string name="action_sort">排序</string>
     <string name="action_view">切换视图</string>
+    <string name="action_show_systemapp">显示系统应用</string>
     <string name="action_confirm">确定</string>
     <string name="action_cancel">取消</string>
     <string name="action_continue">继续</string>

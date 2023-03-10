@@ -183,7 +183,9 @@ public class RefreshImportListTask extends Thread {
 //                        Global.item_list.clear();
                         throw new RuntimeException("task interrupted");
                     }
-                    getAllImportItemsFromPath(fileItem1);
+                    if(fileItem1.isFile()){
+                        getAllImportItemsFromPath(fileItem1);
+                    }
                 }
             }
         } catch (Exception e) {

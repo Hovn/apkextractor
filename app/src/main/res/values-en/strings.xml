@@ -4,6 +4,7 @@
     <string name="action_search">Search</string>
     <string name="action_sort">Sort</string>
     <string name="action_view">View mode</string>
+    <string name="action_show_systemapp">Show system apps</string>
     <string name="action_confirm">Confirm</string>
     <string name="action_cancel">@android:string/cancel</string>
     <string name="action_continue">continue</string>

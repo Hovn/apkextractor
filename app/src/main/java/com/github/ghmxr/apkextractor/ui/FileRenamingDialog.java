@@ -95,11 +95,12 @@ public class FileRenamingDialog extends AlertDialog implements View.OnClickListe
             btn_P.setVisibility(View.GONE);
             btn_V.setVisibility(View.GONE);
         }*/
-        if (importItems.size() == 1) {
-            editText.setText(EnvironmentUtil.getFileMainName(importItems.get(0).getFileItem().getName()));
-        } else {
-            editText.setText("NewFile-" + Constants.FONT_AUTO_SEQUENCE_NUMBER);
-        }
+//        if (importItems.size() == 1) {
+//            editText.setText(EnvironmentUtil.getFileMainName(importItems.get(0).getFileItem().getName()));
+//        } else {
+//            editText.setText("NewFile-" + Constants.FONT_AUTO_SEQUENCE_NUMBER);
+//        }
+        editText.setText("?N_v?V(?C)");//_arm64_signHovn_hashAdsf_原版
 
         setView(dialogView);
         setTitle(context.getResources().getString(R.string.more_file_rename));

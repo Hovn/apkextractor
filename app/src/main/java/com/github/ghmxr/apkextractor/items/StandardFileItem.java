@@ -3,6 +3,8 @@ package com.github.ghmxr.apkextractor.items;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.github.ghmxr.apkextractor.utils.EnvironmentUtil;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -10,6 +12,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public final class StandardFileItem extends FileItem {
     private File file;
@@ -43,15 +46,33 @@ public final class StandardFileItem extends FileItem {
     }
 
     @Override
-    public boolean renameTo(@NonNull String newName) throws Exception {
+    public boolean renameTo(@NonNull String newName0) throws Exception {
+        //如果新文件名中存在不被允许的字符,win（\/:*?"<>|），lin(:等),替换掉非法字符
+        String newName=newName0.replace(":","-");
         final File destFile = new File(file.getParentFile(), newName);
-        if (destFile.exists()) {
-            throw new Exception(destFile.getAbsolutePath() + " already exists");
+
+        //如果文件名未更改
+        if(getName().equals(newName)){
+            //throw new Exception(newName + " filename unchanged, ignore!");
+            return true;
         }
+
+        //如果目标文件已经存在，则加上随机后缀
+        if (destFile.exists()) {
+            //throw new Exception(destFile.getAbsolutePath() + " already exists!");
+            String main= EnvironmentUtil.getFileMainName(newName);
+            int random= new Random().nextInt(100);//[0,100)
+            String ext= EnvironmentUtil.getFileExtensionName(newName);
+            String newNewName= main+"_e"+random+"."+ext;
+            return renameTo(newNewName);
+        }
+
+        //实际重命名
         if (file.renameTo(destFile)) {
             file = destFile;
             return true;
         } else {
+            //return false;
             throw new Exception("error renaming to " + destFile.getAbsolutePath());
         }
     }
